@@ -6,32 +6,32 @@ import java.util.List;
 
 //Message moze byc abstrakcyjna generyczna odnosnie typu contentu
 public class Message {
-    Agent sender;
-    Agent receiver;
+    String sender;
+    String receiver;
     Date timeStamp;
     List<Individual> content;
     //...
 
-    public Message(Agent sender, Agent receiver, List<Individual> content, Date timeStamp) {
+    public Message(String sender, String receiver, List<Individual> content, Date timeStamp) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
         this.timeStamp = timeStamp;
     }
 
-    public Agent getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(Agent sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public Agent getReceiver() {
+    public String getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Agent receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 

@@ -5,7 +5,7 @@ import pl.edu.agh.iisg.toik.mocks.Individual;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryStrategy implements EmigrateStrategy {
+public class BinaryEmigrateStrategy implements EmigrateStrategy {
 
     public List<Individual> selectIndividuals(List<Individual> individuals) {
         List<Individual> individualList = new ArrayList<Individual>();

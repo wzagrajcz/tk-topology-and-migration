@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface MigrationService {
 
-    public void emigrate(List<Individual> population);
-    public void imigrate(List<Individual> population, Message message);
+    void emigrate(List<Individual> population);
+    void imigrate(List<Individual> population, Message message);
 }
