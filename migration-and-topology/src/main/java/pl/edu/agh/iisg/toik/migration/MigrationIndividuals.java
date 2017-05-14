@@ -14,7 +14,9 @@ public class MigrationIndividuals implements MigrationService {
 
 
     public void emigrate(List<Individual> population) {
-        EmigrateStrategy emigrateStrategy = new BinaryEmigrateStrategy();
+        //od czego zalezy, ktora strategia wyboru osobnikow zostanie wykorzystana?
+        //jak maja zostac przeslane parametry uzyte w strategiach emigracji?
+        EmigrateStrategy emigrateStrategy = new BestIndividualsEmigrateStrategy();
         List<Individual> selectedIndividuals = emigrateStrategy.selectIndividuals(population);
         Message message = createMessage(selectedIndividuals);
         agent.sendMessage(agent.getNeighbour(),message);
@@ -23,9 +25,6 @@ public class MigrationIndividuals implements MigrationService {
 
     public void imigrate(List<Individual> population, Message message) {
         List<Individual> imigratedIndividuals = message.getContent();
-        int numberOfIndividualsToImigrate = imigratedIndividuals.size();
-        ImigrateStrategy imigrateStrategy = new RandomImigrateStrategy();
-        population = imigrateStrategy.removeIndividuals(population, numberOfIndividualsToImigrate);
         population.addAll(imigratedIndividuals);
 
     }
