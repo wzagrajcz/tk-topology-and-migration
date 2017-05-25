@@ -1,25 +1,56 @@
 package pl.edu.agh.iisg.toik.mocks;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
+
 public class Agent {
-    List<String> neighbours;
-    String name;
-    //...
 
-    public String getNeighbour(){
-        if(neighbours != null && neighbours.size()>0){
-            return neighbours.get(0);
-        }
-        return null; //to nie powinno sie wydarzyc, bo kazdy agent ma sasiada
+    private List<Individual> population;
+    private LinkedList<Message> incomingMessages = new LinkedList<Message>();
+    private LinkedList<Message> outgoingMessages = new LinkedList<Message>();
+    private String name = null;
+    private List<Agent> neighbours;
+
+    public void receiveMessage(Message message){
+        incomingMessages.add(message);
     }
 
-    public boolean sendMessage(String receiver, Message message){
-        //wysylanie...
-        return true;
+    public void sendMessage(Message message){
+        outgoingMessages.add(message);
     }
 
-    public String getName(){
+    public List<Message> getOutgoingMessages(){
+        return Collections.unmodifiableList(outgoingMessages);
+    }
+
+    public boolean consumeOutgoingMessage(Message message){
+        return outgoingMessages.remove(message);
+    }
+
+    public List<Message> getIncomingMessages(){
+        return Collections.unmodifiableList(incomingMessages);
+    }
+
+    public boolean consumeIncomingMessage(Message message){
+        return incomingMessages.remove(message);
+    }
+
+    public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Agent> getNeighbours() {
+        return neighbours;
+    }
+
+    public void setNeighbours(List<Agent> neighbours) {
+        this.neighbours = neighbours;
+    }
+
 }
